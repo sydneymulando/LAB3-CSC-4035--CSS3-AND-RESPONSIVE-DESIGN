@@ -1,0 +1,386 @@
+/* --- Base Styles & Variables --- */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --border-color: #dee2e6;
+    --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure footer sticks to bottom */
+}
+
+main {
+    flex-grow: 1; /* Allow main content to take up available space */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Center content */
+    width: 100%;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.8em;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    animation: slideInDown 0.8s ease-out; /* Example animation */
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+img.responsive-image {
+    max-width: 100%; /* Requirement */
+    height: auto;    /* Requirement */
+    display: block;  /* Prevent extra space below image */
+    margin: 1em 0;
+}
+
+/* --- Header & Navigation (Flexbox) --- */
+header {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Push logo left, links right */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo a {
+    color: var(--light-color);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex; /* Use Flexbox for nav items */
+}
+
+.nav-links li {
+    margin-left: 20px; /* Spacing between links */
+}
+
+.nav-links a {
+    color: var(--light-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active /* Add 'active' class via JS if needed, or style current page link */ {
+    background-color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 15px;
+    margin-top: auto; /* Push footer to bottom */
+}
+
+/* --- Home Page Specific Styles --- */
+.hero {
+    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 86, 179, 0.7)), url('images/hero-placeholder.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out; /* Animation requirement */
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    color: white; /* Override default h1 color */
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+}
+
+.cta-button {
+    background-color: white;
+    color: var(--primary-color);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+.cta-button:hover {
+    background-color: var(--light-color);
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.home-content-wrapper {
+    display: flex; /* Requirement: Flexbox side-by-side layout */
+    gap: 30px; /* Space between flex items */
+    margin-top: 20px;
+}
+
+.intro-content {
+    flex: 3; /* Take up more space */
+    background-color: #fdfdfd;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.sidebar {
+    flex: 1; /* Take up less space */
+    background-color: var(--light-color);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.sidebar h3 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5em;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.5em;
+}
+
+/* --- Services Page Specific Styles (Grid) --- */
+.services-page h1, .services-page > p {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.services-grid {
+    display: grid; /* Requirement: Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid columns */
+    gap: 25px;
+}
+
+.service-card {
+    border: 1px solid var(--border-color); /* Requirement */
+    border-radius: 8px;
+    padding: 25px; /* Requirement */
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Requirement: transition */
+}
+
+.service-card:hover {
+    transform: translateY(-5px); /* Requirement: hover effect */
+    box-shadow: var(--hover-shadow); /* Requirement: hover effect */
+}
+
+.service-card .service-icon {
+    max-width: 60px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 15px;
+    /* Add filter/styles for placeholder if it's generic */
+    /* filter: invert(50%) sepia(80%) saturate(500%) hue-rotate(180deg); */
+}
+
+.service-card h2 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+/* --- Contact Page Specific Styles --- */
+.contact-page h1, .contact-page > p {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: var(--light-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* Makes label take full width */
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%; /* Responsive form fields */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Requirement: focus transition */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color); /* Requirement: focus style */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Requirement: focus style */
+    outline: none; /* Remove default outline */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 100px;
+}
+
+.submit-button {
+    display: block; /* Make button take full width */
+    width: 100%;
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform 0.1s ease; /* Requirement: button hover */
+}
+
+.submit-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.submit-button:active {
+    transform: scale(0.98); /* Subtle press effect */
+}
+
+/* --- Animations --- */
+@keyframes fadeIn { /* Requirement: @keyframes animation */
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* --- Media Queries (Responsive Design) --- */
+
+/* Requirement: Breakpoint 1 (Large Tablets / Small Laptops) */
+@media (max-width: 1024px) {
+    h1 { font-size: 2.2em; }
+    .hero h1 { font-size: 2.5em; }
+    .services-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .home-content-wrapper { gap: 20px; }
+}
+
+/* Requirement: Breakpoint 2 (Tablets) */
+@media (max-width: 768px) {
+    h1 { font-size: 2em; }
+    .hero h1 { font-size: 2.2em; }
+    .hero p { font-size: 1.1em; }
+
+    .navbar { flex-direction: column; align-items: flex-start;}
+    .nav-links { margin-top: 10px; width: 100%; justify-content: space-around; }
+    .nav-links li { margin-left: 0; } /* Remove left margin when stacked/wrapped */
+
+    .home-content-wrapper {
+        flex-direction: column; /* Stack intro and sidebar */
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust minmax */
+        gap: 20px;
+    }
+    .service-card { padding: 20px; }
+
+    .contact-form { padding: 20px; }
+}
+
+/* Requirement: Breakpoint 3 (Mobile Phones) */
+@media (max-width: 480px) {
+    body { font-size: 15px; } /* Adjust base font size */
+    h1 { font-size: 1.8em; }
+    .hero { padding: 40px 15px; }
+    .hero h1 { font-size: 2em; }
+    .hero p { font-size: 1em; }
+    .cta-button { padding: 10px 20px; font-size: 0.9em; }
+
+    .navbar { align-items: center; } /* Center items in column layout */
+    .logo { margin-bottom: 10px; }
+    .nav-links { flex-direction: column; align-items: center; }
+    .nav-links li { margin-bottom: 10px; } /* Space when vertically stacked */
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column grid */
+        gap: 15px;
+    }
+    .service-card { padding: 15px; }
+
+    .contact-form { max-width: 95%; padding: 15px; }
+    .form-group input, .form-group textarea { padding: 10px; }
+    .submit-button { padding: 10px 15px; font-size: 1em; }
+
+    main { padding: 15px; }
+}
